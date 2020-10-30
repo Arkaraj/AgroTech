@@ -1,8 +1,8 @@
 <?php
 session_start();
 //include('db.php');
-$MERCHANT_KEY = "gtKFFx"; 
-$SALT = "eCwWELxi";
+$MERCHANT_KEY = ""; 
+$SALT = "";
 $hash_string = '';
 //$PAYU_BASE_URL = "https://secure.payu.in";
 $PAYU_BASE_URL = "https://test.payu.in";
@@ -17,8 +17,8 @@ $formError = 0;
 $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 $posted['txnid']=$txnid;
 $posted['amount']=100;
-$posted['firstname']="Vishal Gupta";
-$posted['email']="phpvishal@gmail.com";
+$posted['firstname']="";
+$posted['email']="";
 $posted['phone']="9999999999";
 $posted['productinfo']="productinfo";
 $posted['key']=$MERCHANT_KEY ;
