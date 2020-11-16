@@ -22,9 +22,9 @@ if($type=='email'){
 	$mail->Port=2525;
 	$mail->SMTPSecure="tls";
 	$mail->SMTPAuth=true;
-	$mail->Username="478ce4b2e2ffb8";
-	$mail->Password="c3275a5c458897";
-	$mail->SetFrom("arkaraj2017@gmail.com");
+	$mail->Username="";
+	$mail->Password="";
+	$mail->SetFrom("");
 	$mail->addAddress($email);
 	$mail->IsHTML(true);
 	$mail->Subject="New OTP";
@@ -53,7 +53,7 @@ if($type=='mobile'){
 	$message="$otp is your otp";
 	
 	$mobile='91'.$mobile;
-	$apiKey = urlencode('LV/3HPr2XHQ-tu34YWGZx3bBCLb5xmFF3T1evEkx6M');
+	$apiKey = urlencode('');
 	$numbers = array($mobile);
 	$sender = urlencode('TXTLCL');
 	$message = rawurlencode($message);
