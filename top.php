@@ -76,6 +76,12 @@ if($mypage=='product.php'){
 		margin-right:15px;
 	}
 	</style>
+	<script>
+			function focusearch() {
+				document.getElementById("searcht").focus();
+				
+			}
+			</script>
 </head>
 <body>
     <!--[if lt IE 8]>
@@ -166,7 +172,7 @@ if($mypage=='product.php'){
 									}
 									?>
 									<div class="header__search search search__open <?php echo $class?>">
-                                        <a href="#"><i class="icon-magnifier icons"></i></a>
+                                        <a href="#" onclick="focusearch()"><i class="icon-magnifier icons"></i></a>
                                     </div>
 									
                                     <div class="header__account">
@@ -210,7 +216,7 @@ if($mypage=='product.php'){
 										<a href="wishlist.php" class="mr15"><i class="icon-heart icons"></i></a>
                                         <a href="wishlist.php"><span class="htc__wishlist"><?php echo $wishlist_count?></span></a>
 										<?php } ?>
-                                        <a href="cart.php"><i class="icon-handbag icons"></i></a>
+										<a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                         <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
                                     </div>
                                 </div>
@@ -229,7 +235,7 @@ if($mypage=='product.php'){
                         <div class="col-md-12">
                             <div class="search__inner">
                                 <form action="search.php" method="get">
-                                    <input placeholder="Search here... " type="text" name="str">
+                                    <input placeholder="Search here... " type="text" id="searcht" name="str">
                                     <button type="submit"></button>
                                 </form>
                                 <div class="search__close__btn">
@@ -240,4 +246,63 @@ if($mypage=='product.php'){
                     </div>
                 </div>
             </div>
-        </div>
+		</div>
+		
+		            <!-- Start Cart Panel -->
+					<div class="shopping__cart">
+                <div class="shopping__cart__inner">
+                    <div class="offsetmenu__close__btn">
+                        <a href="#"><i class="zmdi zmdi-close"></i></a>
+					</div>
+					<?php
+					$cart_total = 0;
+										if(isset($_SESSION['cart']) && count($_SESSION['cart'])!=0){
+											foreach($_SESSION['cart'] as $key=>$val){
+											$productArr=get_product($con,'','',$key);
+											$pname=$productArr[0]['name'];
+											$mrp=$productArr[0]['mrp'];
+											$price=$productArr[0]['price'];
+											$image=$productArr[0]['image'];
+											$qty=$val['qty'];
+											$cart_total=$cart_total+($price*$qty);
+											$pid = $productArr[0]['id'];
+											?>
+                    <div class="shp__cart__wrap">
+                        <div class="shp__single__product">
+                            <div class="shp__pro__thumb">
+                                <a href="<?php echo 'product.php?id='.$pid ?>">
+								<img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$image?>"  />
+                                </a>
+                            </div>
+                            <div class="shp__pro__details">
+                                <h2><a href="<?php echo 'product.php?id='.$pid ?>"><?php echo $pname?></a></h2>
+                                <span class="quantity">QTY: <?php echo $qty?></span>
+                                <span class="shp__price">Rs. <?php echo $price*$qty?></span>
+                            </div>
+                            <div class="remove__btn">
+                                <a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+											<?php } ?>
+					<ul class="shoping__total">
+                        <li class="subtotal">Subtotal:</li>
+                        <li class="total__price"><?php echo $cart_total?> Rs</li>
+                    </ul>
+					<?php } else { ?>
+						<center>
+						<h2><i class="fa fa-shopping-basket fa-5x"></i></h2><br>
+						<h3 style="margin-bottom:60px">Your cart is empty at the moment!</h3> 
+						</center>
+						<?php
+					}?>
+                    <ul class="shopping__btn">
+                        <li><a href="cart.php">View Cart</a></li>
+                        <li class="shp__checkout"><a href="checkout.php">Checkout</a></li>
+						<li><a href="./" onclick="manage_cart(0,'empty')" title="Remove all items">Remove All</a></li>
+					</ul>
+
+                </div>
+            </div>
+            <!-- End Cart Panel -->
+			
