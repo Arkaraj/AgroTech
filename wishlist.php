@@ -43,7 +43,7 @@ $res=mysqli_query($con,"select product.name,product.image,product.price,product.
                                             <th class="product-thumbnail">products</th>
                                             <th class="product-name">name of products</th>
                                             <th class="product-name">Remove</th>
-											<th class="product-name"></th>
+											<th class="product-name">Add to Cart</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,8 +51,8 @@ $res=mysqli_query($con,"select product.name,product.image,product.price,product.
 										while($row=mysqli_fetch_assoc($res)){
 										?>
 											<tr>
-												<td class="product-thumbnail"><a href="#"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row['image']?>"  /></a></td>
-												<td class="product-name"><a href="#"><?php echo $row['name']?></a>
+												<td class="product-thumbnail"><a href="<?php echo 'product.php?id='.$row['pid'] ?>"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row['image']?>"  /></a></td>
+												<td class="product-name"><a href="<?php echo 'product.php?id='.$row['pid'] ?>"><?php echo $row['name']?></a>
 													<ul  class="pro__prize">
 														<li class="old__prize"><?php echo $row['mrp']?></li>
 														<li><?php echo $row['price']?></li>
@@ -60,7 +60,8 @@ $res=mysqli_query($con,"select product.name,product.image,product.price,product.
 												</td>
 												
 												<td class="product-remove"><a href="wishlist.php?wishlist_id=<?php echo $row['id']?>"><i class="icon-trash icons"></i></a></td>
-												<td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php echo $row['pid']?>','add')">Add to Cart</a></td>
+												<td class="product-remove">
+                                                <a href="javascript:void(0)" onclick="manage_cart('<?php echo $row['pid']?>','add')">Add to Cart</a></td>
 											</tr>
 											<?php } ?>
                                     </tbody>

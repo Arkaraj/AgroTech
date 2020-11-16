@@ -18,6 +18,7 @@ if(isset($_GET['id'])){
 	</script>
 	<?php
 }
+$rating = $get_product['0']['Rating'];
 ?>
 
  <!-- Start Bradcaump area -->
@@ -64,6 +65,22 @@ if(isset($_GET['id'])){
                         <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
                             <div class="ht__product__dtl">
                                 <h2><?php echo $get_product['0']['name']?></h2>
+                                <br>
+                                <h2>Rating:</h2>
+                                <!-- <h2><?php echo $rating?>/5</h2> -->
+                                <ul class="rating">
+                                <?php
+                                
+                                for ($i=0; $i < $rating; $i++) { 
+                                    echo '<li><i class="icon-star icons"></i></li>';
+                                }
+
+                                for ($i=0; $i < 5-$rating; $i++) { 
+                                    echo '<li class="old"><i class="icon-star icons"></i></li>';
+                                }
+
+                                ?>
+                                </ul>
                                 <ul  class="pro__prize">
                                     <li class="old__prize"><?php echo $get_product['0']['mrp']?></li>
                                     <li>₹ <?php echo $get_product['0']['price']?></li>
@@ -114,7 +131,7 @@ if(isset($_GET['id'])){
 								<?php
 								if($cart_show!=''){
 								?>
-								<a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
+								<a class="fr__btn" id="dim" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
 								<?php } ?>
                             </div>
                         </div>

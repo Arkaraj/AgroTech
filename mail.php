@@ -536,7 +536,7 @@ $html='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://ww
                         </table>
                         <p>If you have any questions about this invoice, simply reply to this email or reach out to our <a href="{{support_url}}">support team</a> for help.</p>
                         <p>Cheers,
-                          <br>The [Product Name] Team</p>
+                          <br>The AgroTech Team</p>
                         <!-- Sub copy -->
                         
                       </div>
@@ -552,7 +552,7 @@ $html='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://ww
                     <td class="content-cell" align="center">
                       <p class="f-fallback sub align-center">&copy; 2019 [Product Name]. All rights reserved.</p>
                       <p class="f-fallback sub align-center">
-                        [Company Name, LLC]
+                        [AgroTech, LLC]
                         <br>1234 Street Rd.
                         <br>Suite 1234
                       </p>

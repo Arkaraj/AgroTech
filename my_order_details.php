@@ -22,7 +22,7 @@ $coupon_value=$coupon_details['coupon_value'];
                                 <nav class="bradcaump-inner">
                                   <a class="breadcrumb-item" href="index.html">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">Thank You</span>
+                                  <span class="breadcrumb-item active">Your Order</span>
                                 </nav>
                             </div>
                         </div>
@@ -80,7 +80,7 @@ $coupon_value=$coupon_details['coupon_value'];
 												<td class="product-name">Total Price</td>
 												<td class="product-name">
 												<?php 
-												echo $total_price-$coupon_value;
+												echo floatval($total_price)-floatval($coupon_value);
 												?></td>
                                                 
                                             </tr>

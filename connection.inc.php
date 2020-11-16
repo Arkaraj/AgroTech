@@ -1,6 +1,6 @@
 <?php
 session_start();
-$con=mysqli_connect("localhost","root","","Ecom");
+$con=mysqli_connect("localhost","root","Arceus373","Ecom");
 define('SERVER_PATH',$_SERVER['DOCUMENT_ROOT'].'/Agrotech');
 define('SITE_PATH','http://localhost/Agrotech/');
 

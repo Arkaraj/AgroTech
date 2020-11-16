@@ -20,6 +20,8 @@ $price_low_selected="";
 $new_selected="";
 $old_selected="";
 $sort_order="";
+$sort_rating="";
+$sort_rating_low="";
 if(isset($_GET['sort'])){
 	$sort=mysqli_real_escape_string($con,$_GET['sort']);
 	if($sort=="price_high"){
@@ -34,11 +36,17 @@ if(isset($_GET['sort'])){
 	}if($sort=="old"){
 		$sort_order=" order by product.id asc ";
 		$old_selected="selected";
+	}if($sort=="rate_high"){
+		$sort_order=" order by product.Rating desc ";
+		$sort_rating="selected";
+	}if($sort=="rate_low"){
+		$sort_order=" order by product.Rating asc ";
+		$sort_rating_low="selected";
 	}
 
 }
 
-if($cat_id>0 && ($sub_categories!='' && $sub_categories>0)){
+if($cat_id>0 && ($sub_categories!='' && $sub_categories>=0)){
 	$get_product=get_product($con,'',$cat_id,'','',$sort_order,'',$sub_categories);
 }else{
 	?>
@@ -48,7 +56,7 @@ if($cat_id>0 && ($sub_categories!='' && $sub_categories>0)){
 	<?php
 }										
 ?>
-<div class="body__overlay"></div>
+<!-- <div class="body__overlay"></div> -->
         
         <!-- Start Bradcaump area -->
         <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -78,12 +86,14 @@ if($cat_id>0 && ($sub_categories!='' && $sub_categories>0)){
                         <div class="htc__product__rightidebar">
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
-                                    <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id?>','<?php echo SITE_PATH?>')" id="sort_product_id">
+                                    <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id?>','<?php echo $sub_categories?>','<?php echo SITE_PATH?>')" id="sort_product_id">
                                         <option value="">Default softing</option>
                                         <option value="price_low" <?php echo $price_low_selected?>>Sort by price low to hight</option>
                                         <option value="price_high" <?php echo $price_high_selected?>>Sort by price high to low</option>
                                         <option value="new" <?php echo $new_selected?>>Sort by new first</option>
 										<option value="old" <?php echo $old_selected?>>Sort by old first</option>
+										<option value="rate_high" <?php echo $sort_rating?>>Sort by Rating high to low</option>
+										<option value="rate_low" <?php echo $sort_rating_low?>>Sort by Rating low to high</option>
                                     </select>
                                 </div>
                                
@@ -94,6 +104,7 @@ if($cat_id>0 && ($sub_categories!='' && $sub_categories>0)){
                                     <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
                                         <?php
 										foreach($get_product as $list){
+											$rating = $list['Rating'];
 										?>
 										<!-- Start Single Category -->
 										<div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
@@ -116,6 +127,17 @@ if($cat_id>0 && ($sub_categories!='' && $sub_categories>0)){
 														<li><?php echo $list['price']?></li>
 													</ul>
 												</div>
+												<h4>Rating: </h4>
+                                        <ul class="rating">
+                                <?php
+                                
+                                for ($i=0; $i < $rating; $i++) { 
+                                    echo '<li><i class="icon-star icons"></i></li>';
+                                }
+
+                                for ($i=0; $i < 5-$rating; $i++) { 
+                                    echo '<li class="old"><i class="icon-star icons"></i></li>';
+                                } ?>
 											</div>
 										</div>
 										<?php } ?>

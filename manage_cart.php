@@ -30,6 +30,9 @@ if($type=='remove'){
 if($type=='update'){
 	$obj->updateProduct($pid,$qty);
 }
+if($type=='empty'){
+	$obj->emptyProduct();
+}
 
 echo $obj->totalProduct();
 ?>

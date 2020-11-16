@@ -81,7 +81,7 @@ AgroTech works to give them the fair share of money for the hardwork they do, by
                                 <h2 class="title__line--2">NEWSLETTER </h2>
                                 <div class="ft__inner">
                                     <div class="news__input">
-                                        <input type="text" placeholder="Your Mail*">
+                                        <input type="text" id="end" placeholder="Your Mail*">
                                         <div class="send__btn">
                                             <a class="fr__btn" href="#">Send Mail</a>
                                         </div>

@@ -134,7 +134,7 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
 						</div> 
                 
 				</div>
-					
+
             </div>
         </section>
 		<input type="hidden" id="is_email_verified"/>
@@ -216,6 +216,7 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
 							jQuery('#mobile').attr('disabled',true);
 							jQuery('.mobile_verify_otp').show();
 							jQuery('.mobile_sent_otp').hide();
+							
 						}else if(result=='mobile_present'){
 							jQuery('.mobile_sent_otp').html('Send OTP');
 							jQuery('.mobile_sent_otp').attr('disabled',false);

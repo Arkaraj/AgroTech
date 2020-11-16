@@ -42,7 +42,8 @@ require('top.php');
 										<?php
 										if(isset($_SESSION['cart'])){
 											foreach($_SESSION['cart'] as $key=>$val){
-											$productArr=get_product($con,'','',$key);
+                                            $productArr=get_product($con,'','',$key);
+                                            $pid = $productArr[0]['id'];
 											$pname=$productArr[0]['name'];
 											$mrp=$productArr[0]['mrp'];
 											$price=$productArr[0]['price'];
@@ -50,8 +51,8 @@ require('top.php');
 											$qty=$val['qty'];
 											?>
 											<tr>
-												<td class="product-thumbnail"><a href="#"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$image?>"  /></a></td>
-												<td class="product-name"><a href="#"><?php echo $pname?></a>
+												<td class="product-thumbnail"><a href="<?php echo 'product.php?id='.$pid ?>"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$image?>"  /></a></td>
+												<td class="product-name"><a href="<?php echo 'product.php?id='.$pid ?>"><?php echo $pname?></a>
 													<ul  class="pro__prize">
 														<li class="old__prize"><?php echo $mrp?></li>
 														<li><?php echo $price?></li>

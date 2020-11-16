@@ -11,7 +11,7 @@ if($str!=''){
 	<?php
 }										
 ?>
-<div class="body__overlay"></div>
+<!-- <div class="body__overlay"></div> -->
         
         <!-- Start Bradcaump area -->
         <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -47,6 +47,7 @@ if($str!=''){
                                     <div role="tabpanel" id="grid-view" class="single-grid-view tab-pane fade in active clearfix">
                                         <?php
 										foreach($get_product as $list){
+											$rating = $list['Rating'];
 										?>
 										<!-- Start Single Category -->
 										<div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
@@ -70,6 +71,17 @@ if($str!=''){
 													</ul>
 												</div>
 											</div>
+											<h4>Rating: </h4>
+                                        <ul class="rating">
+                                <?php
+                                
+                                for ($i=0; $i < $rating; $i++) { 
+                                    echo '<li><i class="icon-star icons"></i></li>';
+                                }
+
+                                for ($i=0; $i < 5-$rating; $i++) { 
+                                    echo '<li class="old"><i class="icon-star icons"></i></li>';
+                                } ?>
 										</div>
 										<?php } ?>
                                     </div>
