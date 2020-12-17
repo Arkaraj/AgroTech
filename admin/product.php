@@ -28,10 +28,37 @@ if(isset($_GET['type']) && $_GET['type']!=''){
 		mysqli_query($con,$delete_sql);
 	}
 }
-
 $sql="select product.*,categories.categories from product,categories where product.categories_id=categories.id $condition order by product.id desc";
+
+if(isset($_GET['str']) && $_GET['str'] !=''){
+	$str=mysqli_real_escape_string($con,$_GET['str']);
+	
+	$sql="select product.*,categories.categories from product,categories where product.categories_id=categories.id $condition and (product.name like '%$str%' or product.description like '%$str%') order by product.id desc";
+}
+
 $res=mysqli_query($con,$sql);
+$check_val=mysqli_num_rows($res);
 ?>
+<style>
+.d-flex {
+	margin-bottom: 5px;
+    width: 25%;
+	margin-left: 73%;
+}
+.form-control{
+	border: none;
+	border-bottom: 1.5px solid #17a2b8;
+    border-radius: 0px;
+	margin-right: 10px;
+	outline: 0;
+}
+.form-control:focus{
+	box-shadow: none;
+}
+#move{
+	margin-left:20%;
+}
+</style>
 <div class="content pb-0">
 	<div class="orders">
 	   <div class="row">
@@ -41,6 +68,12 @@ $res=mysqli_query($con,$sql);
 				   <h4 class="box-title">Products </h4>
 				   <h4 class="box-link"><a href="manage_product.php">Add Product</a> </h4>
 				</div>
+				<!-- Search form -->
+				<div class="d-flex">
+        <input class="form-control me-2" type="search" id="names" placeholder="Search" aria-label="Search">
+		<button class="btn btn-outline-info" id="btn" name="str" onclick="search('<?php echo SITE_PATH?>')"><i class="fas fa-search" aria-hidden="true"></i></button>
+      </div>
+	  <!-- End of Search form -->
 				<div class="card-body--">
 				   <div class="table-stats order-table ov-h">
 					  <table class="table ">
@@ -60,6 +93,7 @@ $res=mysqli_query($con,$sql);
 						 <tbody>
 							<?php 
 							$i=1;
+							if($check_val > 0) {
 							while($row=mysqli_fetch_assoc($res)){?>
 							<tr>
 							   <td class="serial"><?php echo $i?></td>
@@ -92,8 +126,12 @@ $res=mysqli_query($con,$sql);
 								?>
 							   </td>
 							</tr>
-							<?php } ?>
+							<?php 
+							} ?>
 						 </tbody>
+						 <?php }else{
+								echo "<h2 id='move'>Data not found</h2>";
+							 }?>
 					  </table>
 				   </div>
 				</div>
@@ -102,6 +140,12 @@ $res=mysqli_query($con,$sql);
 	   </div>
 	</div>
 </div>
+<script>
+function search(site_path) {
+	var search_product_id = jQuery('#names').val();
+	window.location.href = site_path + "admin/product.php?str=" + search_product_id;
+}
+</script>
 <?php
 require('footer.inc.php');
 ?>
