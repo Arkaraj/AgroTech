@@ -7,3 +7,11 @@ To see the website goto: https://agro-tech.herokuapp.com/
 
 # Admin/Farmer side:
 ![Screenshot 2020-12-24 at 2 39 43 PM](https://user-images.githubusercontent.com/55324916/103077498-df43d200-45f5-11eb-9048-c8ff895d8b75.png)
+
+# For PWA
+
+Wrokbox and to generate icons:
+
+```sh
+$ npx pwa-asset-generator ./images/icn.png icons
+```
