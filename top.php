@@ -60,6 +60,7 @@ if($mypage=='product.php'){
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/custom.css">
 	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	<link rel="manifest" href="manifest.json">
 	<style>
 	.htc__shopping__cart a span.htc__wishlist {
 		background: #2196F3;
@@ -202,7 +203,7 @@ if($mypage=='product.php'){
 											</nav>
 											<?php
 										}else{
-											echo '<a href="login.php" class="mr15">Login/Register</a>';
+											echo '<a href="login.php" id="onchange" class="mr15">Login/Register</a>';
 										}
 										?>
 									
@@ -305,4 +306,26 @@ if($mypage=='product.php'){
                 </div>
             </div>
             <!-- End Cart Panel -->
-			
+			<script>
+if (navigator.userAgent.match(/Mobile/)) {
+try {
+	document.getElementById('onchange').innerHTML = '<i class="icon-user icons"></i>';
+} catch (error) {
+	console.log("Logged in!!");
+}
+}
+
+if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(reg => {
+                        console.log('Registration succeeded. Scope is ' + reg.scope);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+
+</script>
