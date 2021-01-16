@@ -949,6 +949,7 @@ h4.offset__title {
     border: 1px solid #000;
     color: #000;
     font-size: 14px;
+    position: relative;
     height: 57px;
     line-height: 57px;
     margin-bottom: 15px;
@@ -958,11 +959,47 @@ h4.offset__title {
     transition: all 0.5s ease 0s;
     width: 100%;
     display: block;
+    z-index: 1;
+    /* transition: all 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86), border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86); */
+}
+.shopping__btn li a::before,
+li.shp__checkout::before{
+  content: '';
+  position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+  /* translate:transform(5,10); */
+	width: 0%;
+	height: 100%;
+	top: 0;
+	left: 0;
+  background: #2196F3;
+}
+.shopping__btn li a:hover:before{
+  width: 100%;
 }
 .shopping__btn li a:hover{
-    background: #2196F3;
+    /* background: #2196F3; */
     border: 1px solid #2196F3;
-    color: #fff;
+    color: #ffffff;
+    
+}
+li.shp__checkout a{
+  position: relative;
+}
+li.shp__checkout a::before{
+  background: #3CE78B;
+}
+li.shp__checkout a:hover:before{
+  width: 100%;
+}
+li.shp__checkout a:hover{
+    /* background: #2196F3; */
+    border: 1px solid #3CE78B;
+    color: #000000;
+    
 }
 .shopping__btn .shp__checkout a{
     background-color: #000;
@@ -1013,7 +1050,8 @@ h4.offset__title {
   border-top: 1px solid #ddd;
 }
 .dropdown-menu{padding:10px;}
-.mr15{margin-right:15px !important;}
+.mr15{margin-right:15px;}
+/* !important */
 .mr15::before {
     top:0px;
 }
