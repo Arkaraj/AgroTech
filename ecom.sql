@@ -41,10 +41,11 @@ CREATE TABLE `admin_users` (
 -- Dumping data for table `admin_users`
 --
 
+-- Removed the users
 INSERT INTO `admin_users` (`id`, `username`, `password`, `role`, `email`, `mobile`, `status`) VALUES
-(1, 'admin', 'admin', 0, '', '', 1),
-(2, 'vishal', 'vishal', 1, 'vishal@gmail.com', '1234567890', 1),
-(3, 'Arkaraj', 'Arkaraj', 1, 'arkaraj@test.com', '1234567890', 1);
+(1, '', '', 0, '', '', 1),
+(2, '', '', 1, '', '1234567890', 1),
+(3, '', '', 1, '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -369,8 +370,9 @@ CREATE TABLE `shiprocket_token` (
 -- Dumping data for table `shiprocket_token`
 --
 
+-- Removed for safety
 INSERT INTO `shiprocket_token` (`id`, `token`) VALUES
-(1, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjQ5NDkwOSwiaXNzIjoiaHR0cHM6Ly9hcGl2Mi5zaGlwcm9ja2V0LmluL3YxL2V4dGVybmFsL2F1dGgvbG9naW4iLCJpYXQiOjE1OTA0MDQ4NTMsImV4cCI6MTU5MTI2ODg1MywibmJmIjoxNTkwNDA0ODUzLCJqdGkiOiJWZU4zaE5YMm1LdVY4cXB0In0.YKracv-yDKppYb2FISr5zE_4gEGWIAz-HzIa6cit9nw');
+(1, '');
 
 -- --------------------------------------------------------
 
@@ -424,10 +426,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
+-- Removed for safety
+
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `mobile`, `added_on`) VALUES
-(1, 'Arkaraj Ghosh', 'Arkaraj', 'arkaraj@test.com', '7395847373', '2020-08-13 00:00:00'),
-(2, 'Bot 1', 'AgroBot', 'agro@bot.com', '1234567890', '2020-09-14 00:00:00'),
-(3, 'Arkaraj', 'test1234', 'arkaraj@test.com', '1122334455', '2020-09-13 00:00:00');
+(1, 'Arkaraj Ghosh', '', '', '7395847373', '2020-08-13 00:00:00'),
+(2, '', 'AgroBot', '', '1234567890', '2020-09-14 00:00:00'),
+(3, '', '', '', '1122334455', '2020-09-13 00:00:00');
 
 -- --------------------------------------------------------
 
